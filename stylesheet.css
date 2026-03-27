@@ -1,3 +1,153 @@
-.title {
-  color: #02ccba;
+:root {
+  --bg: #f7f4ea;
+  --panel: #fffef8;
+  --board-light: #f3deb3;
+  --board-dark: #d7b37a;
+  --line: #7a5d2f;
+  --text: #2a2118;
+  --accent: #7a2f2f;
+  --highlight: #fff3a6;
+  --enemy-highlight: #f8b8b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.control-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+select,
+button {
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  border: 1px solid #b69c70;
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f2ead8;
+}
+
+.status-panel {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid #d7c7a4;
+  border-radius: 10px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(36px, 1fr));
+  width: min(100%, 840px);
+  border: 3px solid var(--line);
+  aspect-ratio: 1 / 1;
+  background: var(--line);
+}
+
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(122, 93, 47, 0.35);
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
+  line-height: 1;
+  user-select: none;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.square.light {
+  background: var(--board-light);
+}
+
+.square.dark {
+  background: var(--board-dark);
+}
+
+.square.selected {
+  outline: 3px solid #2f5f9f;
+  outline-offset: -3px;
+}
+
+.square.legal {
+  background: var(--highlight);
+}
+
+.square.capture {
+  background: var(--enemy-highlight);
+}
+
+.piece {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.piece.gote {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.rules {
+  margin-top: 16px;
+  background: var(--panel);
+  border: 1px solid #d7c7a4;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.rules ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+@media (max-width: 680px) {
+  .board {
+    width: 100%;
+    grid-template-columns: repeat(12, minmax(24px, 1fr));
+  }
+
+  .square {
+    font-size: 0.65rem;
+  }
 }
