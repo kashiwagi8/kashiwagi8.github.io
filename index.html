@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <link rel="stylesheet" href="stylesheet.css">
     <meta charset="utf-8">
-    <title>Progate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中将棋AI対戦</title>
+    <link rel="stylesheet" href="stylesheet.css">
   </head>
   <body>
-    <h1 class="title">HTML & CSS の開発環境を用意しよう！</h1>
-    <p>自分のPCでWebページを開発する方法を学習しましょう</p>
-    <img src="01_2560x1600.jpg">
+    <main class="app">
+      <header>
+        <h1>中将棋 AI 対戦（簡易版）</h1>
+        <p>
+          12×12盤の中将棋をベースにしたブラウザ対戦アプリです。先手（あなた）対後手（AI）で対局できます。
+        </p>
+      </header>
 
+      <section class="controls">
+        <div class="control-group">
+          <label for="aiDepth">AI思考の深さ</label>
+          <select id="aiDepth">
+            <option value="1">1（速い）</option>
+            <option value="2" selected>2（標準）</option>
+            <option value="3">3（強い・重い）</option>
+          </select>
+        </div>
+        <button id="resetButton" type="button">新しい対局</button>
+      </section>
+
+      <section class="status-panel">
+        <p><strong>手番:</strong> <span id="turnLabel">先手（あなた）</span></p>
+        <p id="statusMessage">駒を選択してください。</p>
+      </section>
+
+      <section>
+        <div id="board" class="board" aria-label="中将棋盤"></div>
+      </section>
+
+      <section class="rules">
+        <h2>ルール（このアプリの仕様）</h2>
+        <ul>
+          <li>基本は中将棋ベースですが、実装は遊びやすい簡易版です。</li>
+          <li>王将（玉将）を取ると勝ちです。</li>
+          <li>歩兵・飛車・角行は敵陣3段目以内で成れます。</li>
+          <li>獅子は「8近傍 + 距離2」のマスへ移動できます（簡易実装）。</li>
+          <li>駒の打ち（持ち駒）は未実装です。</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
   </body>
 </html>
